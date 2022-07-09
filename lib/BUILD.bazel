@@ -1,0 +1,16 @@
+load("@rules_dotnet//dotnet:defs.bzl", "fsharp_library")
+
+fsharp_library(
+  name = "lib",
+  srcs = [
+    "Math.fs",
+  ],
+  target_frameworks = [ "netstandard2.1" ],
+  deps = [
+    "@paket.main//netstandard.library.ref",
+    "@paket.main//fsharp.core",
+  ],
+  visibility = [
+    "//visibility:public",
+  ],
+)

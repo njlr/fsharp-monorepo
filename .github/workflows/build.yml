@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - "main"
+      - "master"
+      - "**"
+  pull_request:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Bazel Cache
+      uses: actions/cache@v3
+      with:
+        path: "~/.cache/bazel"
+        key: bazel
+
+    - name: Bazel Build and Test
+      run: |
+        bazel build //...
+        bazel test //...

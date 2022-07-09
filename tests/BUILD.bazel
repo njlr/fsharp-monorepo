@@ -1,0 +1,24 @@
+load("@rules_dotnet//dotnet:defs.bzl", "fsharp_binary")
+
+fsharp_binary(
+  name = "expecto",
+  srcs = [
+    "Program.fs",
+  ],
+  target_frameworks = [ "net6.0" ],
+  deps = [
+    "@paket.main//microsoft.netcore.app.ref",
+    "@paket.main//fsharp.core",
+    "@paket.main//expecto",
+    "//lib",
+  ],
+)
+
+sh_test(
+  name = "tests",
+  srcs = [ "test.sh" ],
+  args = [ "$(location :expecto)" ],
+  data = [
+    ":expecto",
+  ],
+)

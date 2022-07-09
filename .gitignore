@@ -1,0 +1,7 @@
+bazel-*
+
+bin
+obj
+
+.paket
+paket-files
