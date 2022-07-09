@@ -63,7 +63,7 @@ Then sync with Bazel:
 ./sync-paket-deps.sh
 ```
 
-The `deps` list item in you Bazel files should like this:
+The `deps` list item in your Bazel files should like this:
 
 ```python
 "@paket.main//thoth.json.net"
