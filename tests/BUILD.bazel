@@ -1,7 +1,7 @@
 load("@rules_dotnet//dotnet:defs.bzl", "fsharp_binary")
 
 fsharp_binary(
-  name = "expecto",
+  name = "test_runner",
   srcs = [
     "Program.fs",
   ],
@@ -17,8 +17,8 @@ fsharp_binary(
 sh_test(
   name = "tests",
   srcs = [ "test.sh" ],
-  args = [ "$(location :expecto)" ],
+  args = [ "$(location :test_runner)" ],
   data = [
-    ":expecto",
+    ":test_runner",
   ],
 )
